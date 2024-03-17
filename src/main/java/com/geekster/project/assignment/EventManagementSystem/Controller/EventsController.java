@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -87,5 +88,15 @@ public class EventsController {
     public List<Events> getPendingEventsForApproval(@RequestParam String status)
     {
         return eventsServices.getPendingEventsForApproval(status);
+    }
+
+    @GetMapping("/categorywiseparticipation")
+    public ArrayList eventParticipationCategoryWise(){
+        return eventsServices.eventParticipationCategoryWise();
+    }
+
+    @GetMapping("/monthlyparticipation")
+    public ArrayList eventParticipationMonthWise(){
+        return eventsServices.eventParticipationCategoryWise();
     }
 }

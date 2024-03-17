@@ -4,6 +4,7 @@ import com.geekster.project.assignment.EventManagementSystem.Model.Events;
 import com.geekster.project.assignment.EventManagementSystem.Model.ParticipantsList;
 import com.geekster.project.assignment.EventManagementSystem.Repository.EventsRepository;
 import com.geekster.project.assignment.EventManagementSystem.Repository.ParticipantsListRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -121,5 +122,76 @@ public class EventsServices {
     public List<Events> getPendingEventsForApproval(String status)
     {
         return eventRepo.findByStatus(status);
+    }
+
+    //category wise event participation chart
+    public ArrayList eventParticipationCategoryWise()
+    {
+        ArrayList eventParticipationCategoryWiseList = new ArrayList<>();
+        List<ParticipantsList> participantsLists = participantsListRepo.findAll();
+        for(int i=0;i<participantsLists.size();i++)
+        {
+            Events eventCategory = eventRepo.findByEventId(participantsLists.get(i).getEventId());
+            switch (eventCategory.getEventCategory()){
+                case "TECHNICAL":
+                    eventParticipationCategoryWiseList.add(0,participantsLists.get(i));
+                    break;
+
+                case "CULTURAL":
+                    eventParticipationCategoryWiseList.add(1,participantsLists.get(i));
+                    break;
+
+                case "COMMUNITY EVENT":
+                    eventParticipationCategoryWiseList.add(2,participantsLists.get(i));
+                    break;
+
+                case "SPORTS":
+                    eventParticipationCategoryWiseList.add(3,participantsLists.get(i));
+                    break;
+
+                default:
+                    continue;
+            }
+
+        }
+        return eventParticipationCategoryWiseList;
+    }
+
+    //Monthly Participation Graph List
+    public ArrayList eventParticipationMonthWise()
+    {
+        ArrayList eventParticipationMonthWiseList = new ArrayList<>();
+        List<ParticipantsList> participantsLists = participantsListRepo.findAll();
+        for(int i=0;i<participantsLists.size();i++)
+        {
+            Events eventMonth = eventRepo.findByEventId(participantsLists.get(i).getEventId());
+            Integer month = eventMonth.getEventDate().getMonth().getValue();
+            if(month==1)
+                eventParticipationMonthWiseList.add(0,participantsLists.get(i));
+            else if(month==2)
+                eventParticipationMonthWiseList.add(1,participantsLists.get(i));
+            else if(month==3)
+                eventParticipationMonthWiseList.add(2,participantsLists.get(i));
+            else if(month==4)
+                eventParticipationMonthWiseList.add(3,participantsLists.get(i));
+            else if(month==5)
+                eventParticipationMonthWiseList.add(4,participantsLists.get(i));
+            else if(month==6)
+                eventParticipationMonthWiseList.add(5,participantsLists.get(i));
+            else if(month==7)
+                eventParticipationMonthWiseList.add(6,participantsLists.get(i));
+            else if(month==8)
+                eventParticipationMonthWiseList.add(7,participantsLists.get(i));
+            else if(month==9)
+                eventParticipationMonthWiseList.add(8,participantsLists.get(i));
+            else if(month==10)
+                eventParticipationMonthWiseList.add(9,participantsLists.get(i));
+            else if(month==11)
+                eventParticipationMonthWiseList.add(10,participantsLists.get(i));
+            else if(month==12)
+                eventParticipationMonthWiseList.add(11,participantsLists.get(i));
+
+        }
+        return eventParticipationMonthWiseList;
     }
 }

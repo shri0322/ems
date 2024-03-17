@@ -12,5 +12,6 @@ public interface ParticipantsListRepository extends CrudRepository<ParticipantsL
     List<ParticipantsList> findByEventId(Integer eventId);
     List<ParticipantsList> findByEmployeeId(Integer employeeId);
 
+    List<ParticipantsList> findAll();
     ParticipantsList findByLocation(String location);
 }
