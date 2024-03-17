@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.geekster.project.assignment</groupId>
-	<artifactId>University-Event-Management</artifactId>
+	<artifactId>Event-Management-System</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>University Event Management</name>
 	<description>University Event Management is a robust Spring Boot Application designed to streamline the organization and coordination of university events and student information. This system features secure data storage using H2 Database, strict validation checks on student attributes, and efficient endpoints for adding, updating, and retrieving student and event records. Manage your university&apos;s events events effortlessly with the user-friendly application, ensuring accurate event details and student information</description>
@@ -45,6 +45,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>

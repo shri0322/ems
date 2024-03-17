@@ -1,13 +1,13 @@
-package com.geekster.project.assignment.UniversityEventManagement;
+package com.geekster.project.assignment.EventManagementSystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UniversityEventManagementApplication {
+public class EventManagementSystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UniversityEventManagementApplication.class, args);
+		SpringApplication.run(EventManagementSystemApplication.class, args);
 	}
 
 }
