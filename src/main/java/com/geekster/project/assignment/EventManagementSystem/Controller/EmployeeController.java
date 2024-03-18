@@ -2,9 +2,11 @@ package com.geekster.project.assignment.EventManagementSystem.Controller;
 
 import com.geekster.project.assignment.EventManagementSystem.Model.Employee;
 import com.geekster.project.assignment.EventManagementSystem.Service.EmployeeService;
+import jdk.dynalink.linker.LinkerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -39,9 +41,15 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-    @GetMapping("/user/{id}")
-    public Optional<Employee> getUserById(@PathVariable Integer employeeId){
+    @GetMapping("/user/id")
+    public Optional<Employee> getUserById(@RequestParam Integer employeeId){
         return employeeService.getEmployeeById(employeeId);
+    }
+
+    @GetMapping("/getallorgs")
+    public List<Employee> getAllOrganisers(@RequestParam String role)
+    {
+        return employeeService.getAllOrganisers(role);
     }
 
 }

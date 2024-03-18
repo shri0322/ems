@@ -29,7 +29,7 @@ public class EventsController {
         return eventsServices.getAllEvents();
     }
     @GetMapping("event/{id}")
-    public Optional<Events> getEventById(@PathVariable Integer id){
+    public Events getEventById(@PathVariable Integer id){
         return eventsServices.getEventById(id);
     }
 

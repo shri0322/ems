@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EventsRepository extends CrudRepository<Events,Integer> {
@@ -15,4 +16,5 @@ public interface EventsRepository extends CrudRepository<Events,Integer> {
     //List<Events> findAllEvents();
     List<Events> findByEventCategory(String eventCategory);
     List<Events> findByStatus(String status);
+
 }

@@ -81,8 +81,8 @@ public class EventsServices {
         return userEvents;
     }
 
-    public Optional<Events> getEventById(Integer eventId){
-        return eventRepo.findById(eventId);
+    public Events getEventById(Integer eventId){
+        return eventRepo.findByEventId(eventId);
     }
 
     public Iterable<Events> getEventsOnSameDate(LocalDate date){

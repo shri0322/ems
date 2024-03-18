@@ -6,6 +6,7 @@ import com.geekster.project.assignment.EventManagementSystem.Repository.EventsRe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -25,8 +26,9 @@ public class EmployeeService {
         if(emp==null)
         {
             return "No such User exists!";
-        }else if(!Objects.equals(emp.getRole(), "USER"))
+        }else if(!Objects.equals(emp.getRole(), "User"))
         {
+            System.out.println(emp.getRole());
             return "User does not have access to Login into this role";
         }
         else return "Login Successful!";
@@ -39,8 +41,9 @@ public class EmployeeService {
         if(emp==null)
         {
             return "No such Organizer exists!";
-        }else if(!Objects.equals(emp.getRole(), "ORGANIZER"))
+        }else if(!Objects.equals(emp.getRole(), "Organizer"))
         {
+            System.out.println(emp.getRole());
             return "User does not have access to Login into this role";
         }
         else return "Login Successful!";
@@ -52,8 +55,9 @@ public class EmployeeService {
         if(emp==null)
         {
             return "No such Admin exists!";
-        }else if(!Objects.equals(emp.getRole(), "ADMIN"))
+        }else if(!Objects.equals(emp.getRole(), "Admin"))
         {
+            System.out.println(emp.getRole());
             return "User does not have access to Login into this role";
         }
         else return "Login Successful!";
@@ -61,7 +65,7 @@ public class EmployeeService {
 
     public String addEmployee(Employee e){
         employeeRepository.save(e);
-        return "User" + e.getEmployeeId() + " is added";
+        return "User " + e.getEmployeeId() + " is added";
     }
 
     public String addEmployees(List<Employee> e){
@@ -77,5 +81,9 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
+    public List<Employee> getAllOrganisers(String role)
+    {
+        return employeeRepository.findByRole(role);
+    }
 
 }
